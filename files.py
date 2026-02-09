@@ -1,14 +1,14 @@
 from card import Card
 
-def import_set(filepath):
-    set_cards = []
+def import_cards(filepath):
+    all_cards = []
 
-    with open(filepath) as set_list:
-        cards = set_list.readlines()
+    with open(filepath) as cards_csv:
+        cards = cards_csv.readlines()
         for card in cards[1:]:
             card_fields = card.split(",")
             card_id = card_fields[0]
-            name = card_fields[1]
-            set_cards.append(Card(card_id, name))
+            name = card_fields[1].strip()
+            all_cards.append(Card(card_id, name))
 
-    return set_cards
+    return all_cards

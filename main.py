@@ -1,10 +1,10 @@
 from card import Card
-from files import import_set
+from files import import_cards
 
 def main():
-    sp_cards = import_set("cards/sp.csv")
+    all_cards = import_cards("data/cards.csv")
 
-    for card in sp_cards:
+    for card in all_cards:
         print(card)
 
 main()
