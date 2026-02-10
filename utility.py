@@ -1,5 +1,7 @@
-def search_card_by_id(card_dict, card_id):
-    if card_id not in card_dict:
+import db
+
+def search_card_by_id(card_id):
+    if card_id not in db.card_dict:
         return None
     
-    return card_dict[card_id] 
+    return db.card_dict[card_id] 
