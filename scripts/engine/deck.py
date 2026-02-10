@@ -1,4 +1,4 @@
-from utility import search_card_by_id
+from engine.search import search_card_by_id
 
 class Deck:
     def __init__(self, name, cards):

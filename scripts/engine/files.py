@@ -1,5 +1,5 @@
-from card import Card
-from deck import Deck, build_deck_from_list
+from engine.card import Card
+from engine.deck import Deck, build_deck_from_list
 
 def import_cards(filepath):
     card_dict = {}

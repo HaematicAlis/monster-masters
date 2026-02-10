@@ -1,10 +1,11 @@
-from card import Card
-from files import import_cards
-from deck import build_deck_from_list
-from utility import search_card_by_id
-import db
+from engine.card import Card
+from engine.files import import_cards
+from engine.deck import build_deck_from_list
+from engine.search import search_card_by_id
+from engine.db import init_card_dict
 
-db.card_dict = import_cards("data/cards.csv")
+card_dict = import_cards("../data/cards.csv")
+init_card_dict(card_dict)
 
 def test_build():
     test_cases = [
@@ -42,7 +43,7 @@ def test_search():
             name = None
         else:
             name = card.name
-        print(f"input: {case_input}")
+        print(f"input: {card_id}")
         print(f"expected: {expected_output}")
         print(f"actual: {name}")
         if (name == expected_output):
@@ -50,6 +51,6 @@ def test_search():
         else:
             print("===== FAIL =====")
 
-test_build()
-#test_search()
+#test_build()
+test_search()
 
