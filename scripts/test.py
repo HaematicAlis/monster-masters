@@ -9,10 +9,10 @@ init_card_dict(card_dict)
 
 def test_build():
     test_cases = [
-        ("testdeck", ["SP01", "SP02"], "[testdeck]\nName: Monster Master\nName: Pickle Fly\n"),
-        ("testdeck", ["SP03", "SP03"], "[testdeck]\nName: Star Complete\nName: Star Complete\n"),
-        ("testdeck", ["SP01", "SP04"], "[testdeck]\nName: Monster Master\n"),
-        ("testdeck", ["SP02"], "[testdeck]\nName: Pickle Fly\n"),
+        ("testdeck", ["SP01", "SP02"], "[testdeck]\nSP01: Monster Master\nSP02: Pickle Fly\n"),
+        ("testdeck", ["SP03", "SP03"], "[testdeck]\nSP03: Star Complete\nSP03: Star Complete\n"),
+        ("testdeck", ["SP01", "SP04"], "[testdeck]\nSP01: Monster Master\n"),
+        ("testdeck", ["SP02"], "[testdeck]\nSP02: Pickle Fly\n"),
         ("testdeck", ["SP05"], "! Deck is empty."),
         ("testdeck", [], "! Deck is empty.")
     ]
@@ -51,6 +51,6 @@ def test_search():
         else:
             print("===== FAIL =====")
 
-#test_build()
-test_search()
+test_build()
+#test_search()
 

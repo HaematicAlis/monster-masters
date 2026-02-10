@@ -10,7 +10,7 @@ def import_cards(filepath):
             card_fields = card.split(",")
             card_id = card_fields[0]
             name = card_fields[1].strip()
-            card_dict[card_id] = Card(name)
+            card_dict[card_id] = Card(card_id, name)
 
     return card_dict
 
