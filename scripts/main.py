@@ -3,7 +3,7 @@ from engine.files import import_cards
 from engine.deck import build_deck_from_list
 from engine.db import init_card_dict
 
-CARD_DATA_PATH = "../data/cards.csv"
+CARD_DATA_PATH = "data/cards.csv"
 
 def main():
     card_dict = import_cards(CARD_DATA_PATH)

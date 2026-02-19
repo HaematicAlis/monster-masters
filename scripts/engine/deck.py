@@ -8,9 +8,9 @@ class Deck:
     def __str__(self):
         if self.cards == []:
             return "! Deck is empty."
-        card_list = f"[{self.name}]\n"
+        card_list = f"[Deck: {self.name}] ({len(self.cards)}"
         for card in self.cards:
-            card_list += f"{card}\n"
+            card_list += f"\n{card}"
         return card_list
 
 def build_deck_from_list(name, decklist):

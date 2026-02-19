@@ -3,9 +3,42 @@ from engine.files import import_cards
 from engine.deck import build_deck_from_list
 from engine.search import search_card_by_id
 from engine.db import init_card_dict
+from engine.zone import Zone
 
-card_dict = import_cards("../data/cards.csv")
+card_dict = import_cards("data/cards.csv")
 init_card_dict(card_dict)
+
+def test_zones():
+    deck_zone = Zone("deck")
+    hand_zone = Zone("hand")
+    print("===== ADD =====")
+    deck_zone.add(card_dict["SP01"])
+    deck_zone.add(card_dict["SP02"])
+    deck_zone.add(card_dict["SP03"])
+    deck_zone.add(card_dict["SP02"])
+    print(deck_zone)
+    print("===== REMOVE BY INDEX =====")
+    deck_zone.remove(0)
+    print(deck_zone)
+    print("===== REMOVE NOT EXIST =====")
+    deck_zone.remove(7)
+    print(deck_zone)
+    print("===== CHANGE ZONES =====")
+    deck_zone.move(2, hand_zone)
+    print(deck_zone)
+    print(hand_zone)
+    print("===== CHANGE FROM NOT EXIST =====")
+    deck_zone.move(5, hand_zone)
+    print(deck_zone)
+    print(hand_zone)
+    print("===== CHANGE TO OWN ZONE =====")
+    deck_zone.move(0, deck_zone, 2)
+    print(deck_zone)
+    print(hand_zone)
+    print("===== CHANGE CREATES EMPTY =====")
+    hand_zone.move(0, deck_zone, 1)
+    print(deck_zone)
+    print(hand_zone)
 
 def test_build():
     test_cases = [
@@ -51,6 +84,6 @@ def test_search():
         else:
             print("===== FAIL =====")
 
-test_build()
+#test_build()
 #test_search()
-
+test_zones()

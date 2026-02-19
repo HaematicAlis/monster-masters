@@ -8,9 +8,9 @@ def import_cards(filepath):
         cards = cards_csv.readlines()
         for card in cards[1:]:
             card_fields = card.split(",")
-            card_id = card_fields[0]
+            set_id = card_fields[0]
             name = card_fields[1].strip()
-            card_dict[card_id] = Card(card_id, name)
+            card_dict[set_id] = { "set_id": set_id, "name": name }
 
     return card_dict
 
