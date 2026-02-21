@@ -1,4 +1,182 @@
-card_id,name
-SP01,Monster Master
-SP02,Pickle Fly
-SP03,Star Complete
+set_id,name,level,type,abilities,rarity,color,cost
+sp01,Monster Masher,5,machina,rematch,c,green,
+sp02,Jelly Jar,3,anima,block;sigil,c,red,
+sp03,Nirmi Worm,2,terra,poison2,c,red,
+sp04,Explosive Teddy,3,lux,war;profi;c,red,
+sp05,Cat Clock,4,anima,rescue,c,green,
+sp06,Looker,4,anima,random,c,green,
+sp07,Monster Masters card,1,anima,boost,c,red,
+sp10,Star Fragment 1,6,Star Fragment,block,c,red,
+sp08,Star Fragment 2,5,Star Fragment,war,c,red,
+sp09,Star Fragment 3,4,Star Fragment,seal,c,red,
+sp12,Star Fragment 4,3,Star Fragment,boost,u,red,
+sp11,Star Fragment 5,2,Star Fragment,profit,u,red,
+sp13,Star Fragment 6,1,Star Fragment,rescue,u,red,
+sp14,Evil Fly,4,umbra,sigil;poison,u,green,
+sp15,Evil Pumpkin,5,umbra,poison,u,green,
+sp16,Fluff of the Fairy,1,fae,profit,u,red,
+sp17,Flyman,3,anima,seal;profit,u,red,
+sp18,Long Sun,5,lux,block;seal,u,green,
+sp19,Pickleman,2,anima,rescue,u,red,
+sp20,Rock Giant,6,terra,war;destroyer,u,green,
+sp21,Umpoh the Fire Dog,5,lux,destroyer;poison,r,green,
+sp22,Iybelo the Cyclops,7,terra,block;rematch,r,blue,
+sp23,Dragon of War,8,lux,poison,r,blue,
+sp24,Star Dragon,10,lux,too good,r,blue,
+sp25,Cortesia,9,lux,destroyer,r,blue,
+sp26,Shadow Zenhu,3,umbra,victory,r,red,
+sp27,Star Stinger,6,fusion,block;poison2,s,yellow,recycle;1starfragment;1lux
+sp28,Ghost Star,4,fusion,spook,s,yellow,recycle;1starfragment;1lux
+sp29,Pickle Fly,5,fusion;seal,destroyer;s,yellow,recycle;2rank1
+sp30,Star Complete,6,fusion,destroyer;profit2,s,yellow,recycle;2starfragments
+cg01,Crystal Key,1,crystal,vision;artifact,c,red,
+cg02,Crystal Gem,3,crystal,sigil;artifact,c,red,
+cg03,Crystal Slave,1,crystal,rescue;catalyst,c,red,
+cg04,Crystal Ninja,3,crystal,disrupt;vision,c,red,
+cg05,Pixel Snake,2,lux,daybreak,c,red,
+cg06,Robot Monkey,3,machina,disrupt;rematch,c,red,
+cg07,Rocka,3,anima,mini boost,c,red,
+cg08,Paepa,4,anima,seal,c,green,
+cg09,Sisers,6,anima,sigil,c,green,
+cg10,Shoota,2,machina,boost;destroyer,c,red,
+cg11,Crystal Rock,4,crystal,profit;artifact,u,green,
+cg12,Crystal Gate,6,crystal,block;artifact,u,green,
+cg13,Crystal Gunner,4,crystal,snipe,u,green,
+cg14,Crystal Guardian,2,crystal,daybreak;recover;seal,u,red,
+cg15,Tree Warren,4,fae,recover;rescue,u,green,
+cg16,Bearstein,5,anima,destroyer;rematch,u,green,
+cg17,Spikey E100,5,machina,disrupt;destroyer,u,green,
+cg18,Bosh,6,machina,block;sigil,u,green,
+cg19,TNT Soldier,1,lux,kamikaze,u,red,
+cg20,Ductape Wallet Army General,5,anima,war;profit2;u,green,
+cg21,Fern,5,anima,poison,volatile,r,green,
+cg22,Matter Dragon,8,umbra,destoyer;catalyst,r,blue,
+cg23,Crystal Dragon,7,crystal,daybreak;volatile,r,blue,
+cg24,Master of Crystals,7,crystal,seal,r,blue,
+cg25,The Monster Master,10,monster,rematch,r,blue,
+cg26,Demon Zenhu,9,advanced,demon mutation,s,yellow,discard;1red
+cg27,Crystal God Invar,6,advanced,block;seal;sigil,s,yellow,discard;1crystal
+cg28,Crystal God Mark,6,advanced,rescue;profit;vision,s,yellow,discard;1crystal
+cg29,Crystal God Trodac,5,advanced,destroyer;poison2,s,yellow,discard;1crystal
+cg30,Crystal God Reedra,1,advanced,chaotic war,s,yellow,discard;1crystal
+sw01,Messenger Pigeon,1,lux,scout;nightbreak,c,red,
+sw02,Crocodealer,4,umbra,banish,c,green,
+sw03,Buster,3,umbra,poison2,c,red,
+sw04,Bit Biter,3,lux,restrict;disrupt,c,red,
+sw05,Hipapotamus,4,lux,muddy;salvage,c,green,
+sw06,Golden Scarab,2,lux,ornamental;profit,c,red,
+sw07,Shadow Fauna,6,umbra,fresh start,c,green,
+sw08,Shadow Ferret,1,umbra,seal;rescue,c,red,
+sw09,Night Vision Owl,6,lux,scout;night hunt,u,green,
+sw10,Two Crocodiles,6,umbra,banish,u,green,
+sw11,Scorpadorp,5,umbra,sigil;poison,u,green,
+sw12,Pixel Python,5,lux,restrict;seal,u,green,
+sw13,Ancient Egyptian Forklift,2,machina,heavy war,u,red,
+sw14,Hummusbird,4,lux,daybreak;vision,u,green,
+sw15,Cash Cow,4,terra,salvage;profit,u,green,
+sw16,Booster Pack,3,anima,mini boost;rescue,u,red,
+sw17,Shadow Wolf,6,umbra,block;war,u,green,
+sw18,Gun Cobra,5,lux,seal;snipe,u,green,
+sw19,Three Crocodiles,8,umbra,banish,r,blue,
+sw20,Bird,9,lux,explore,r,blue,
+sw21,Scorpion Master,7,umbra,poison2;carapace,r,blue,
+sw22,Resolution Rattlesnake,7,lux,disrupt;rematch,r,blue,
+sw23,Ancient Egyptian Ufo,6,machina,rarity war,r,green,
+sw24,Light Koi,1,koi,boost;profit,r,red,
+sw25,Shadow Koi,1,koi,boost;volatile,r,red,
+sw26,Field Cow,20,god,disintegrate,r,blue,
+sw27,Eye of Destruction,0,relic,relic of destruction,s,yellow
+sw28,Eye of Protection,0,relic,relic of protection,s,yellow
+sw29,Ranni Sun Bird,6,advanced,scout;daybreak;nightbreak,s,yellow,discard;1lux
+sw30,Savik of the Wide Waters,7,advanced,destroyer;banis,;s,yellow,discard;1umbra
+sw31,Apebkau Snake of Chaos,7,advanced,seal;war;catalyst,s,yellow,discard;1lux
+sw32,Sekret Water Scorpion,5,advanced,disrupt;poison2,s,yellow,discard;1umbra
+sw33,ratmaru the Rat King;4,advanced,sneak,s,yellow,discard;1green
+sw34,Umbral Koi,1,advanced,stars align;profit2;volatile,s,yellow,discard;1red;or1koi
+vc01,Sky Patrol,3,umbra,halt;bury,c,red,
+vc02,Speedbump,3,umbra,boost;banish,c,red,
+vc03,Roundabout,6,umbra,rematch,c,green,
+vc04,Rose,2,anima,evolution;rescue,c,red
+vc05,Lavender,2,anima,everbloom;alkaline,c,red,
+vc06,Tulip,4,anima,synthesis;dormant,c,green,
+vc07,,1,fae,daybreak;war,c,red,
+vc08,,1,fae,seal;salvage,c,red,
+vc09,Railroad,5,umbra,pact;seal,u,green,
+vc10,Yield,6,umbra,restrict;block,u,green,
+vc11,Speed Limit,4,umbra,fresh start;disrupt,u,green,
+vc12,,5,umbra,poison;banish,u,green,
+vc13,Lily of the Valley,3,anima,poison;infect,u,red,
+vc14,Hellebore,3,anima,frost;growth;profit,u,red,
+vc15,,5,anima,synthesis;growth,u,green,
+vc16,,4,anima,daybreak;frost,u,green,
+vc17,,5,fae,war;poison,u,green,
+vc18,,6,fae,recover;block,u,green,
+vc19,One Way,5,umbra,bleed;reaper,r,green,
+vc20,Stoplight,7,umbra,bloodlust;bury,r,blue,
+vc21,Dead End,8,umbra,sigil;snipe,r,blue,
+vc22,Amaryllis,8,anima,camouflage;synthesis,r,blue,
+vc23,,7,anima,frost;everbloom,r,blue,
+vc24,,7,anima,growth;orchard,r,blue,
+vc25,,3,fae,rescue;profit,r,red,
+vc26,,3,fae,disrupt;volatile,r,red,
+vc27,Traffic Cone,0,relic,safety,s,yellow,
+vc28,Flower Pot,0,relic,fresh soil,s,yellow,
+vc29,Ornamental Vase,0,relic,priceless,s,yellow,
+vc30,Aquarium,0,relic,ecosystem,s,yellow,
+vc31,Wisteria,6,fusion,orchard;rescue;dormant,s,yellow,recycle;2anima
+vc32,Pedestrian Cherry Blossom,3,fusion,rescue;profit;dormant,s,yellow,recycle:1anima;+1umbra
+vc33,Highway Exit,7,fusion,bleed;banish,s,yellow,recycle;2umbra
+vc34,,9,fusion,reaper,s,yellow,recycle;2umbra,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
