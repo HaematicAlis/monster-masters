@@ -12,6 +12,7 @@ def valid_num_cards(cmd, max_cards):
 def draw(game, num_cards=None):
     player = game.cur_player
 
+    print("# of cards: ")
     if num_cards == None:
         cmd = ""
         while not valid_num_cards(cmd, len(player.deck_zone.cards)):
