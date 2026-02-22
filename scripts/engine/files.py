@@ -5,7 +5,7 @@ def import_cards(filepath):
     card_dict = {}
 
     with open(filepath) as cards_csv:
-        cards = cards_csv.readlines()
+        cards = cards_csv.read().splitlines()
         for card in cards[1:]:
             card_fields = card.split(",")
             set_id = card_fields[0]
@@ -15,7 +15,7 @@ def import_cards(filepath):
             abilities = card_fields[4]
             rarity = card_fields[5]
             color = card_fields[6]
-            cost = card_fields[7].strip()
+            cost = card_fields[7]
 
             abilities_arr = abilities.split(";")
             cost_arr = cost.split(";")
@@ -33,9 +33,9 @@ def import_cards(filepath):
 
     return card_dict
 
-def import_decklist(filepath):
+def import_decklist(filepath, pid):
     with open(filepath) as deckfile:
-        lines = deckfile.readlines()
+        lines = deckfile.read().splitlines()
         name = lines[0]
         decklist = lines[1:]
-        return build_deck_from_list(name, decklist)
+        return build_deck_from_list(name, decklist, pid)

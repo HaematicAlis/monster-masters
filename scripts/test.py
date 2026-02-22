@@ -1,5 +1,5 @@
 from engine.card import Card
-from engine.files import import_cards
+from engine.files import import_cards, import_decklist
 from engine.deck import build_deck_from_list
 from engine.search import search_card_by_id
 from engine.db import init_card_dict
@@ -7,6 +7,10 @@ from engine.zone import Zone
 
 card_dict = import_cards("data/cards.csv")
 init_card_dict(card_dict)
+
+def test_build():
+    deck = import_decklist("decks/test.deck", 1)    
+    print(deck)
 
 def test_zones():
     deck_zone = Zone("deck", 1)
@@ -40,28 +44,6 @@ def test_zones():
     hand_zone.move(0, deck_zone, 1)
     print(deck_zone)
     print(hand_zone)
-
-def test_build():
-    test_cases = [
-        ("testdeck", ["SP01", "SP02"], "[testdeck]\nSP01: Monster Master\nSP02: Pickle Fly\n"),
-        ("testdeck", ["SP03", "SP03"], "[testdeck]\nSP03: Star Complete\nSP03: Star Complete\n"),
-        ("testdeck", ["SP01", "SP04"], "[testdeck]\nSP01: Monster Master\n"),
-        ("testdeck", ["SP02"], "[testdeck]\nSP02: Pickle Fly\n"),
-        ("testdeck", ["SP05"], "! Deck is empty."),
-        ("testdeck", [], "! Deck is empty.")
-    ]
-
-    for name, decklist, expected_output in test_cases:
-        deck = build_deck_from_list(name, decklist)
-        print(f"input: {name}, {decklist}")
-        print("expected:")
-        print(expected_output)
-        print("actual:")
-        print(deck)
-        if (str(deck) == expected_output):
-            print("===== PASS =====")
-        else:
-            print("===== FAIL =====")
  
 def test_search():
     test_cases = [
@@ -85,6 +67,6 @@ def test_search():
         else:
             print("===== FAIL =====")
 
-#test_build()
+test_build()
 #test_search()
-test_zones()
+#test_zones()
