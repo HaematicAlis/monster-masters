@@ -2,7 +2,7 @@ set_id,name,level,type,abilities,rarity,color,cost
 sp01,Monster Masher,5,machina,rematch,c,green,
 sp02,Jelly Jar,3,anima,block;sigil,c,red,
 sp03,Nirmi Worm,2,terra,poison2,c,red,
-sp04,Explosive Teddy,3,lux,war;profi;c,red,
+sp04,Explosive Teddy,3,lux,war;profit,c,red,
 sp05,Cat Clock,4,anima,rescue,c,green,
 sp06,Looker,4,anima,random,c,green,
 sp07,Monster Masters card,1,anima,boost,c,red,
@@ -27,7 +27,7 @@ sp25,Cortesia,9,lux,destroyer,r,blue,
 sp26,Shadow Zenhu,3,umbra,victory,r,red,
 sp27,Star Stinger,6,fusion,block;poison2,s,yellow,recycle;1starfragment;1lux
 sp28,Ghost Star,4,fusion,spook,s,yellow,recycle;1starfragment;1lux
-sp29,Pickle Fly,5,fusion;seal,destroyer;s,yellow,recycle;2rank1
+sp29,Pickle Fly,5,fusion,seal;destroyer,s,yellow,recycle;2rank1
 sp30,Star Complete,6,fusion,destroyer;profit2,s,yellow,recycle;2starfragments
 cg01,Crystal Key,1,crystal,vision;artifact,c,red,
 cg02,Crystal Gem,3,crystal,sigil;artifact,c,red,
@@ -48,8 +48,8 @@ cg16,Bearstein,5,anima,destroyer;rematch,u,green,
 cg17,Spikey E100,5,machina,disrupt;destroyer,u,green,
 cg18,Bosh,6,machina,block;sigil,u,green,
 cg19,TNT Soldier,1,lux,kamikaze,u,red,
-cg20,Ductape Wallet Army General,5,anima,war;profit2;u,green,
-cg21,Fern,5,anima,poison,volatile,r,green,
+cg20,Ductape Wallet Army General,5,anima,war;profit2,u,green,
+cg21,Fern,5,anima,poison;volatile,r,green,
 cg22,Matter Dragon,8,umbra,destoyer;catalyst,r,blue,
 cg23,Crystal Dragon,7,crystal,daybreak;volatile,r,blue,
 cg24,Master of Crystals,7,crystal,seal,r,blue,
@@ -85,18 +85,18 @@ sw23,Ancient Egyptian Ufo,6,machina,rarity war,r,green,
 sw24,Light Koi,1,koi,boost;profit,r,red,
 sw25,Shadow Koi,1,koi,boost;volatile,r,red,
 sw26,Field Cow,20,god,disintegrate,r,blue,
-sw27,Eye of Destruction,0,relic,relic of destruction,s,yellow
-sw28,Eye of Protection,0,relic,relic of protection,s,yellow
+sw27,Eye of Destruction,0,relic,relic of destruction,s,yellow,
+sw28,Eye of Protection,0,relic,relic of protection,s,yellow,
 sw29,Ranni Sun Bird,6,advanced,scout;daybreak;nightbreak,s,yellow,discard;1lux
 sw30,Savik of the Wide Waters,7,advanced,destroyer;banis,;s,yellow,discard;1umbra
 sw31,Apebkau Snake of Chaos,7,advanced,seal;war;catalyst,s,yellow,discard;1lux
 sw32,Sekret Water Scorpion,5,advanced,disrupt;poison2,s,yellow,discard;1umbra
-sw33,ratmaru the Rat King;4,advanced,sneak,s,yellow,discard;1green
-sw34,Umbral Koi,1,advanced,stars align;profit2;volatile,s,yellow,discard;1red;or1koi
+sw33,ratmaru the Rat King,4,advanced,sneak,s,yellow,discard;1green
+sw34,Umbral Koi,1,advanced,stars align;profit2;volatile,s,yellow,discardor;1red;1koi
 vc01,Sky Patrol,3,umbra,halt;bury,c,red,
 vc02,Speedbump,3,umbra,boost;banish,c,red,
 vc03,Roundabout,6,umbra,rematch,c,green,
-vc04,Rose,2,anima,evolution;rescue,c,red
+vc04,Rose,2,anima,evolution;rescue,c,red,
 vc05,Lavender,2,anima,everbloom;alkaline,c,red,
 vc06,Tulip,4,anima,synthesis;dormant,c,green,
 vc07,,1,fae,daybreak;war,c,red,
@@ -124,59 +124,6 @@ vc28,Flower Pot,0,relic,fresh soil,s,yellow,
 vc29,Ornamental Vase,0,relic,priceless,s,yellow,
 vc30,Aquarium,0,relic,ecosystem,s,yellow,
 vc31,Wisteria,6,fusion,orchard;rescue;dormant,s,yellow,recycle;2anima
-vc32,Pedestrian Cherry Blossom,3,fusion,rescue;profit;dormant,s,yellow,recycle:1anima;+1umbra
+vc32,Pedestrian Cherry Blossom,3,fusion,rescue;profit;dormant,s,yellow,recycle:1anima;1umbra
 vc33,Highway Exit,7,fusion,bleed;banish,s,yellow,recycle;2umbra
 vc34,,9,fusion,reaper,s,yellow,recycle;2umbra,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

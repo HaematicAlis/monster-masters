@@ -1,9 +1,11 @@
 from engine.card import Card
 
 class Zone:
-    def __init__(self, name):
+    def __init__(self, name, owner):
         self.name = name
+        self.owner = owner
         self.cards = []
+        self.visibility = []
     
     def __str__(self):
         zone_list = f"[Zone: {self.name}] ({len(self.cards)})"
@@ -12,6 +14,22 @@ class Zone:
             zone_list += f"[{str(self.cards.index(card))}]"
             zone_list += str(card)
         return zone_list
+    
+    def reveal_to_player(self, pid):
+        if pid in self.visibility:
+            return
+        self.visibility.append(pid)
+        for card in self.cards:
+            card.visibility.append(pid)
+    
+    def hide_from_player(self, pid):
+        if pid not in self.visibility:
+            return
+        index_to_hide = self.visibility.index(pid)
+        self.visibility.pop(index_to_hide)
+        for card in self.cards:
+            index_to_hide = card.visibility.index(pid)
+            card.visibility.pop(index_to_hide)
 
     # Not currently needed
     #def find_by_uid(self, uid):
@@ -32,7 +50,7 @@ class Zone:
     def add(self, card_info, index=-1):
         if index == -1:
             index = len(self.cards)
-        card_to_add = Card(card_info["set_id"], card_info["name"])
+        card_to_add = Card(card_info, self)
         self.cards.insert(index, card_to_add)
 
     def remove(self, index):
@@ -53,5 +71,8 @@ class Zone:
             print("! Move: Index out of bounds")
             return
         card = self.cards[index]
+        card.zone = zone.name
+        card.owner = zone.owner
+        card.visibility = list(zone.visibility)
         zone.cards.insert(add_index, card)
         self.remove(index)

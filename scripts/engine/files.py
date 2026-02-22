@@ -9,8 +9,27 @@ def import_cards(filepath):
         for card in cards[1:]:
             card_fields = card.split(",")
             set_id = card_fields[0]
-            name = card_fields[1].strip()
-            card_dict[set_id] = { "set_id": set_id, "name": name }
+            name = card_fields[1]
+            level = card_fields[2]
+            typeline = card_fields[3]
+            abilities = card_fields[4]
+            rarity = card_fields[5]
+            color = card_fields[6]
+            cost = card_fields[7].strip()
+
+            abilities_arr = abilities.split(";")
+            cost_arr = cost.split(";")
+
+            card_dict[set_id] = {
+                "set_id": set_id,
+                "name": name,
+                "level": int(level),
+                "typeline": typeline,
+                "abilities": abilities_arr,
+                "rarity": rarity,
+                "color": color,
+                "cost": cost_arr
+            }
 
     return card_dict
 
