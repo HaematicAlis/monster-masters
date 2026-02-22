@@ -1,5 +1,5 @@
 def view_deck(game):
-    print(gae.cur_player.deck_zone)
+    print(game.cur_player.deck_zone)
 
 def view_hand(game):
     print(game.cur_player.hand_zone)
