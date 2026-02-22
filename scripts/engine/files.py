@@ -1,5 +1,5 @@
 from engine.card import Card
-from engine.deck import Deck, build_deck_from_list
+from engine.deck import Deck
 
 def import_cards(filepath):
     card_dict = {}
@@ -33,9 +33,9 @@ def import_cards(filepath):
 
     return card_dict
 
-def import_decklist(filepath, pid):
+def import_decklist(filepath):
     with open(filepath) as deckfile:
         lines = deckfile.read().splitlines()
         name = lines[0]
         decklist = lines[1:]
-        return build_deck_from_list(name, decklist, pid)
+        return Deck(name, decklist)

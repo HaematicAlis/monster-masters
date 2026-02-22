@@ -1,16 +1,18 @@
 from engine.card import Card
 from engine.files import import_cards, import_decklist
-from engine.deck import build_deck_from_list
 from engine.search import search_card_by_id
 from engine.db import init_card_dict
 from engine.zone import Zone
+from engine.player import Player
 
 card_dict = import_cards("data/cards.csv")
 init_card_dict(card_dict)
 
 def test_build():
-    deck = import_decklist("decks/test.deck", 1)    
-    print(deck)
+    p1 = Player("p1", 1)
+    deck = import_decklist("decks/test.deck")
+    deck.build(p1.deck_zone)
+    print(p1.deck_zone)
 
 def test_zones():
     deck_zone = Zone("deck", 1)

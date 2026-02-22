@@ -12,16 +12,12 @@ class Deck:
             return "! Deck is empty."
         card_list = f"[Deck: {self.name}] ({len(self.cards)})"
         for card in self.cards:
-            card_list += f"\n{card.name}"
+            card_list += f"\n{card}"
         return card_list
 
-def build_deck_from_list(name, decklist, pid):
-    deck_zone = Zone(f"deck_{pid}", pid)
-    cards_in_deck = []
-    for card_id in decklist:
-        card_info = search_card_by_id(card_id)
-        if card_info == None:
-            continue
-        card_to_add = Card(card_info, deck_zone)
-        cards_in_deck.append(card_to_add)
-    return Deck(name, cards_in_deck)
+    def build(self, deck_zone):
+        for card_id in self.cards:
+            card_info = search_card_by_id(card_id)
+            if card_info == None:
+                continue
+            deck_zone.add(card_info)

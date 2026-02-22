@@ -25,7 +25,7 @@ class Card:
         created_cards[self.uid] = self
 
     def __str__(self):
-        return f"UID{self.uid}: {self.name}, L{self.level} {self.typeline} ({self.rarity})\nAbilities: {self.abilities}"
+        return f"UID{self.uid}: {self.name}, L{self.level} {self.typeline} ({self.rarity}) {self.abilities}"
 
     def reveal_to_player(self, pid):
         if pid in self.visibility:

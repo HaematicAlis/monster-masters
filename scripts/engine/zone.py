@@ -14,7 +14,7 @@ class Zone:
             zone_list += f"[{str(self.cards.index(card))}]"
             zone_list += str(card)
         return zone_list
-    
+
     def reveal_to_player(self, pid):
         if pid in self.visibility:
             return
