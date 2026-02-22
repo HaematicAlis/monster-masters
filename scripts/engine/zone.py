@@ -15,6 +15,9 @@ class Zone:
             zone_list += str(card)
         return zone_list
 
+    def size(self):
+        return len(self.cards)
+
     def reveal_to_player(self, pid):
         if pid in self.visibility:
             return
