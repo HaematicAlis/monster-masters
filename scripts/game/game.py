@@ -49,7 +49,7 @@ class Game:
             cmd = input("> ")
             if cmd == "draw":
                 draw(self)
-            if cmd == "mill":
+            elif cmd == "mill":
                 recycle_top(self)
             elif cmd == "clear":
                 for i in range(30):
