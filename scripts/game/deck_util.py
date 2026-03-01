@@ -29,3 +29,17 @@ def draw(game, num_cards=None):
 
 def recycle_top(game, num_cards=None):
     move_from_topdeck(game, game.cur_player.recycle_zone, num_cards)
+
+def return_to_deck(game):
+    player = game.cur_player
+    target_card = input("Enter card index you would like to move")
+    print(player.hand_zone)
+    destination = input("Enter deck index")
+    if target_card < len(player.hand_zone.cards):
+        player.hand_zone.move(target_card, player.deck_zone, destination)
+    else:
+        print("Card not in hand")
+    
+def shuffle(game):
+    game.cur_player.deck_zone.shuffle()
+    print("Shuffled deck.")

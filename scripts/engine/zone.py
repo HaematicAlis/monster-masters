@@ -1,5 +1,5 @@
 from engine.card import Card
-
+import random
 class Zone:
     def __init__(self, name, owner):
         self.name = name
@@ -79,3 +79,5 @@ class Zone:
         card.visibility = list(zone.visibility)
         zone.cards.insert(add_index, card)
         self.remove(index)
+    def shuffle(self):
+        random.shuffle(self.cards)

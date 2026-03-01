@@ -1,4 +1,4 @@
-from game.deck_util import draw, recycle_top
+from game.deck_util import draw, recycle_top, shuffle
 from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight
 from game.player_util import switch_player
 from engine.zone import Zone
@@ -79,5 +79,7 @@ class Game:
             elif cmd == "start":
                 self.phase = "draw"
                 print("Phase set to Draw")
+            elif cmd == "shuffle":
+                shuffle(self)
             else:
                 print("! Command not found. Type 'help' for available commands.")
