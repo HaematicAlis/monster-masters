@@ -8,7 +8,7 @@ class Zone:
         self.visibility = []
     
     def __str__(self):
-        zone_list = f"[Zone: {self.name}] ({len(self.cards)})"
+        zone_list = f"[Zone: {self.name}] ({len(self.cards)}) vis: {self.visibility}"
         for card in self.cards:
             zone_list += "\n"
             zone_list += f"[{str(self.cards.index(card))}]"

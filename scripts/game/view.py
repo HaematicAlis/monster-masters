@@ -4,6 +4,21 @@ def view_deck(game):
 def view_hand(game):
     print(game.cur_player.hand_zone)
 
+def view_recycle(game):
+    print(game.cur_player.recycle_zone)
+
+def view_special(game):
+    print(game.cur_player.special_zone)
+
+def view_discard(game):
+    print(game.discard_zone)
+
+def view_ante(game):
+    print(game.ante_zone)
+
+def view_fight(game):
+    print(game.cur_player.fight_zone)
+
 def view_status(game):
     for player in game.players:
         deck_size = player.deck_zone.size()

@@ -9,17 +9,23 @@ def valid_num_cards(cmd, max_cards):
         return False
     return True
 
-def draw(game, num_cards=None):
+def move_from_topdeck(game, zone, num_cards):
     player = game.cur_player
 
-    print("# of cards: ")
+    print("# of cards:")
     if num_cards == None:
         cmd = ""
-        while not valid_num_cards(cmd, len(player.deck_zone.cards)):
+        while not valid_num_cards(cmd, player.deck_zone.size()):
             cmd = input("> ")
         num_cards = int(cmd)
 
     for i in range(num_cards):
-        top_card = len(player.deck_zone.cards) - 1
-        player.deck_zone.move(top_card, player.hand_zone)
-    print(f"{player.name} drew {num_cards} cards.")
+        top_card = player.deck_zone.size() - 1
+        player.deck_zone.move(top_card, zone)
+    print(f"{player.name} moved {num_cards} cards from deck to {zone.name}.")
+
+def draw(game, num_cards=None):
+    move_from_topdeck(game, game.cur_player.hand_zone, num_cards)
+
+def recycle_top(game, num_cards=None):
+    move_from_topdeck(game, game.cur_player.recycle_zone, num_cards)

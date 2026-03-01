@@ -1,6 +1,7 @@
-from game.deck_util import draw
-from game.view import view_deck, view_hand, view_status
+from game.deck_util import draw, recycle_top
+from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight
 from game.player_util import switch_player
+from engine.zone import Zone
 
 largest_gid = 0
 
@@ -16,6 +17,8 @@ class Game:
         self.gid = largest_gid
 
         self.phase = "draw"
+        self.discard_zone = Zone("discard", 0)
+        self.ante_zone = Zone("ante", 0)
 
     def __str__(self):
         s = f"GID{self.gid}: Players["
@@ -30,6 +33,8 @@ class Game:
             cmd = input("> ")
             if cmd == "draw":
                 draw(self)
+            if cmd == "mill":
+                recycle_top(self)
             elif cmd == "clear":
                 for i in range(30):
                     print("")
@@ -39,11 +44,21 @@ class Game:
                 view_deck(self)
             elif cmd == "hand":
                 view_hand(self)
+            elif cmd == "recycle":
+                view_recycle(self)
+            elif cmd == "special":
+                view_special(self)
+            elif cmd == "discard":
+                view_discard(self)
+            elif cmd == "ante":
+                view_ante(self)
+            elif cmd == "fight":
+                view_fight(self)
             elif cmd == "exit":
                 print("Goodbye!")
             elif cmd == "help":
-                print("Zone commands: deck, hand")
-                print("Deck commands: draw")
+                print("Zone commands: deck, hand, recycle, special, discard, ante")
+                print("Deck commands: draw, mill")
                 print("Phase commands: start, main, combat, war, end")
                 print("Game commands: player, status")
                 print("Other commands: exit, help")
