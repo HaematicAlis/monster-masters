@@ -19,6 +19,14 @@ def view_ante(game):
 def view_fight(game):
     print(game.cur_player.fight_zone)
 
+def view_help():
+    print("View commands: deck, hand, recycle, special, ante, fight, status")
+    print("Deck commands: draw, mill, shuffle")
+    print("Hand commands: play")
+    print("Player commands: player")
+    print("Phase commands: start, main, combat, war, end")
+    print("Other commands: exit, help, clear")
+
 def view_status(game):
     for player in game.players:
         deck_size = player.deck_zone.size()
