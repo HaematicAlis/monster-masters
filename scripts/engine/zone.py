@@ -1,11 +1,11 @@
 from engine.card import Card
 import random
 class Zone:
-    def __init__(self, name, owner):
+    def __init__(self, name, owner, visibility=[]):
         self.name = name
         self.owner = owner
         self.cards = []
-        self.visibility = []
+        self.visibility = visibility
     
     def __str__(self):
         zone_list = f"[Zone: {self.name}] ({len(self.cards)}) vis: {self.visibility}"

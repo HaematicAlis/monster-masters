@@ -17,9 +17,24 @@ class Game:
         largest_gid += 1
         self.gid = largest_gid
 
+        # Reveal public player zones to all other players
+        # Create array of all ids for public zones
+        player_ids = []
+        for player in self.players:
+            for p in self.players:
+                if player == p:
+                    continue
+                player.fight_zone.reveal_to_player(p.pid)
+                player.special_zone.reveal_to_player(p.pid)
+            player_ids.append(player.pid)
+
         self.phase = "draw"
-        self.discard_zone = Zone("discard", 0)
-        self.ante_zone = Zone("ante", 0)
+        self.discard_zone = Zone("discard", 0, player_ids)
+        self.ante_zone = Zone("ante", 0, player_ids)
+        
+        for player in self.players:
+            self.discard_zone.reveal_to_player(player.pid)
+            self.ante_zone.reveal_to_player(player.pid)
 
     def __str__(self):
         s = f"GID{self.gid}: Players["
