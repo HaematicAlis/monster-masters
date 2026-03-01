@@ -46,11 +46,18 @@ class Game:
     def game_loop(self):
         cmd = ""
         while cmd != "exit":
-            cmd = input("> ")
+            line = input("> ")
+            tokens = line.split(" ")
+            cmd = tokens[0]
+            if len(tokens) > 1:
+                args = tokens[1:]
+            else:
+                args = []
+
             if cmd == "draw":
-                draw(self)
+                draw(self, args)
             elif cmd == "mill":
-                recycle_top(self)
+                recycle_top(self, args)
             elif cmd == "clear":
                 for i in range(30):
                     print("")

@@ -9,26 +9,30 @@ def valid_num_cards(cmd, max_cards):
         return False
     return True
 
-def move_from_topdeck(game, zone, num_cards):
+def move_from_topdeck(game, zone, args):
     player = game.cur_player
 
-    print("# of cards:")
-    if num_cards == None:
-        cmd = ""
-        while not valid_num_cards(cmd, player.deck_zone.size()):
-            cmd = input("> ")
-        num_cards = int(cmd)
+    if not valid_num_cards(args[0], player.deck_zone.size()):
+        return
+
+    num_cards = int(args[0])
 
     for i in range(num_cards):
         top_card = player.deck_zone.size() - 1
         player.deck_zone.move(top_card, zone)
     print(f"{player.name} moved {num_cards} cards from deck to {zone.name}.")
 
-def draw(game, num_cards=None):
-    move_from_topdeck(game, game.cur_player.hand_zone, num_cards)
+def draw(game, args):
+    if args == [] or len(args) > 1:
+        print("! Usage: draw <num_cards>")
+        return
+    move_from_topdeck(game, game.cur_player.hand_zone, args)
 
-def recycle_top(game, num_cards=None):
-    move_from_topdeck(game, game.cur_player.recycle_zone, num_cards)
+def recycle_top(game, args):
+    if args == [] or len(args) > 1:
+        print("! Usage: mill <num_cards>")
+        return
+    move_from_topdeck(game, game.cur_player.recycle_zone, args)
 
 def return_to_deck(game):
     player = game.cur_player
