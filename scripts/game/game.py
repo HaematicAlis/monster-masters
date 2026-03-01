@@ -1,6 +1,7 @@
 from game.deck_util import draw, recycle_top, shuffle
 from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight
 from game.player_util import switch_player
+from game.hand_util import play_card
 from engine.zone import Zone
 
 largest_gid = 0
@@ -54,11 +55,14 @@ class Game:
                 view_ante(self)
             elif cmd == "fight":
                 view_fight(self)
+            elif cmd == "play":
+                play_card(self)
             elif cmd == "exit":
                 print("Goodbye!")
             elif cmd == "help":
                 print("Zone commands: deck, hand, recycle, special, discard, ante")
                 print("Deck commands: draw, mill")
+                print("Hand commands: play")
                 print("Phase commands: start, main, combat, war, end")
                 print("Game commands: player, status")
                 print("Other commands: exit, help")
