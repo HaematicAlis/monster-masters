@@ -11,6 +11,9 @@ def valid_hand_card(player, cmd):
 
 def play_card(game):
     player = game.cur_player
+    if player.hand_zone.size() == 0:
+        print("! No cards in hand.")
+        return
     
     print(player.hand_zone)
     print("Select card index:")
