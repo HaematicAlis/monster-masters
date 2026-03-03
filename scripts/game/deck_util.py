@@ -36,14 +36,21 @@ def recycle_top(game, args):
 
 def return_to_deck(game):
     player = game.cur_player
-    target_card = input("Enter card index you would like to move")
-    print(player.hand_zone)
-    destination = input("Enter deck index")
-    if target_card < len(player.hand_zone.cards):
-        player.hand_zone.move(target_card, player.deck_zone, destination)
-    else:
-        print("Card not in hand")
-    
+    confirmation = ""
+    while confirmation != "y":
+        print(player.hand_zone)
+        target_card = input("Enter card index you would like to move:\n> ")
+        if not valid_num_cards(target_card, player.hand_zone.size() -1):
+            return
+        print(player.deck_zone)
+        destination = input("Enter deck index:\n> ")
+        if not valid_num_cards(destination, player.deck_zone.size() -1):
+            return
+        confirmation = input(f"Move card {target_card} into deck index {destination}? (y/n)\n").lower()
+    player.hand_zone.move(int(target_card), player.deck_zone, int(destination))
+    print(f"Moved card {target_card} to index {destination}")
+
+
 def shuffle(game):
     game.cur_player.deck_zone.shuffle()
     print("Shuffled deck.")

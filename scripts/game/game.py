@@ -1,4 +1,4 @@
-from game.deck_util import draw, recycle_top, shuffle
+from game.deck_util import draw, recycle_top, shuffle, return_to_deck
 from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight, view_help
 from game.player_util import switch_player
 from game.hand_util import play_card
@@ -100,6 +100,8 @@ class Game:
             elif cmd == "start":
                 self.phase = "draw"
                 print("Phase set to Draw")
+            elif cmd == "return":
+                return_to_deck(self)
             elif cmd == "shuffle":
                 shuffle(self)
             else:
