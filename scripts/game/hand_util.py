@@ -24,4 +24,4 @@ def play_card(game):
     index = int(cmd)
     card = player.hand_zone.cards[index]
     player.hand_zone.move(index, player.fight_zone)
-    print(f"{player} played {card.name}")
+    print(f"{player.name} played {card.name}")

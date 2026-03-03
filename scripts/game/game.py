@@ -12,34 +12,33 @@ class Game:
 
         self.players = players
         if len(players) > 0:
-            self.cur_player = players[0]
+            self.cur_player = next(iter(players.values()))
 
         largest_gid += 1
         self.gid = largest_gid
 
-        # Reveal public player zones to all other players
-        # Create array of all ids for public zones
-        player_ids = []
-        for player in self.players:
-            for p in self.players:
-                if player == p:
-                    continue
-                player.fight_zone.reveal_to_player(p.pid)
-                player.special_zone.reveal_to_player(p.pid)
-            player_ids.append(player.pid)
-
         self.phase = "draw"
+
+        # Reveal public player zones to all other players
+        for player in self.players.values():
+            for pid in self.players:
+                player.fight_zone.reveal_to_player(pid)
+                player.special_zone.reveal_to_player(pid)
+                player.recycle_zone.reveal_to_player(pid)
+
+        player_ids = set(self.players.keys())
         self.discard_zone = Zone("discard", 0, player_ids)
         self.ante_zone = Zone("ante", 0, player_ids)
-        
-        for player in self.players:
-            self.discard_zone.reveal_to_player(player.pid)
-            self.ante_zone.reveal_to_player(player.pid)
+
+        # Reveal public zones to all players 
+        for pid in self.players:
+            self.discard_zone.reveal_to_player(pid)
+            self.ante_zone.reveal_to_player(pid)
 
     def __str__(self):
         s = f"GID{self.gid}: Players["
-        for player in self.players:
-            s += f"PID{player.pid}:{player.name};"
+        for pid in self.players:
+            s += f"PID{pid}:{players[pid].name};"
         s += "]"
         return s
 
@@ -64,19 +63,19 @@ class Game:
             elif cmd == "player":
                 switch_player(self)
             elif cmd == "deck":
-                view_deck(self)
+                view_deck(self, args)
             elif cmd == "hand":
-                view_hand(self)
+                view_hand(self, args)
             elif cmd == "recycle":
-                view_recycle(self)
+                view_recycle(self, args)
             elif cmd == "special":
-                view_special(self)
+                view_special(self, args)
             elif cmd == "discard":
-                view_discard(self)
+                view_discard(self, args)
             elif cmd == "ante":
-                view_ante(self)
+                view_ante(self, args)
             elif cmd == "fight":
-                view_fight(self)
+                view_fight(self, args)
             elif cmd == "play":
                 play_card(self)
             elif cmd == "exit":

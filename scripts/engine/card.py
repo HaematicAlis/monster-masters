@@ -20,21 +20,18 @@ class Card:
 
         self.zone = zone.name
         self.owner = zone.owner
-        self.visibility = list(zone.visibility)
+        self.visibility = set(zone.visibility)
 
         created_cards[self.uid] = self
 
     def __str__(self):
         return f"UID{self.uid}: {self.name}, L{self.level} {self.typeline} ({self.rarity}) {self.abilities}"
 
+    # TODO: Untested after change to set
     def reveal_to_player(self, pid):
-        if pid in self.visibility:
-            return
-        self.visibility.append(pid)
+        self.visibility.add(pid)
         print(f"DEBUG: Appending {pid} to {self.name} (from CARD); vis: {self.visibility}")
 
+    # TODO: Untested after change to set
     def hide_from_player(self, pid):
-        if pid not in self.visibility:
-            return
-        index_to_hide = self.visibility.index(pid)
-        self.visibility.pop(index_to_hide)
+        self.visibility.remove(pid)

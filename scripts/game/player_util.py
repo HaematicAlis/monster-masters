@@ -1,27 +1,21 @@
-def find_player(pid, players):
-    for player in players:
-        if player.pid == pid:
-            return player
-    return None
-
 def valid_player(cmd, players):
     if cmd == "":
         return False
     if not cmd.isdigit():
         print("! Enter a number.")
         return False
-    if find_player(int(cmd), players) == None:
+    if int(cmd) not in players:
         print("! Player not in game")
         return False
     return True
 
 def show_pids(game):
     print("[", end="")
-    for player in game.players:
-        if player == game.cur_player:
-            print(f" > {player.pid} < ", end="")
+    for pid in game.players:
+        if pid == game.cur_player.pid:
+            print(f" > {pid} < ", end="")
         else:
-            print(f" {player.pid} ", end="")
+            print(f" {pid} ", end="")
     print("]")
 
 def switch_player(game):
@@ -33,7 +27,7 @@ def switch_player(game):
         cmd = input("> ")
     pid = int(cmd)
 
-    new_player = find_player(pid, game.players)
+    new_player = game.players[pid]
     game.cur_player = new_player
     show_pids(game)
-    print(f"Switched to {new_player}.")
+    print(f"Switched to {new_player.name}.")

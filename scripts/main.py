@@ -14,7 +14,7 @@ def main():
     p1 = Player("p1", 1)
     p2 = Player("p2", 2)
     
-    game = Game([p1, p2])
+    game = Game({1:p1, 2:p2})
 
     test_deck1 = import_decklist(TEST_DECK)
     test_deck2 = import_decklist(TEST_DECK)
