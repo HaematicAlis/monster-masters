@@ -2,6 +2,7 @@ from game.deck_util import draw, recycle_top, shuffle, return_to_deck
 from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight, view_help
 from game.player_util import switch_player
 from game.hand_util import play_card
+from game.game_util import change_phase
 from engine.zone import Zone
 
 largest_gid = 0
@@ -61,7 +62,7 @@ class Game:
                 for i in range(30):
                     print("")
             elif cmd == "player":
-                switch_player(self)
+                switch_player(self, args)
             elif cmd == "deck":
                 view_deck(self, args)
             elif cmd == "hand":
@@ -84,21 +85,8 @@ class Game:
                 view_help()
             elif cmd == "status":
                 view_status(self)
-            elif cmd == "main":
-                self.phase = "main"
-                print("Phase set to Main")
-            elif cmd == "combat":
-                self.phase = "combat"
-                print("Phase set to Combat")
-            elif cmd == "war":
-                self.phase = "war"
-                print("Phase set to War")
-            elif cmd == "end":
-                self.phase = "end"
-                print("Phase set to End")
-            elif cmd == "start":
-                self.phase = "draw"
-                print("Phase set to Draw")
+            elif cmd == "phase":
+                change_phase(self, args)
             elif cmd == "return":
                 return_to_deck(self)
             elif cmd == "shuffle":

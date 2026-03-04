@@ -11,22 +11,56 @@ def view_deck(game, args):
     if args == []:
         print(game.cur_player.deck_zone)
         return
-    elif len(args) > 2:
+    elif len(args) > 1:
         print("! Usage: deck [pid]")
         return
     if valid_player(game, args[0]):
-        pid = int(arg[0])
+        pid = int(args[0])
         print(game.players[pid].deck_zone)
 
-# TODO: Add args code from deck to other zones
 def view_hand(game, args):
-    print(game.cur_player.hand_zone)
+    if args == []:
+        print(game.cur_player.hand_zone)
+        return
+    elif len(args) > 1:
+        print("! Usage: hand [pid]")
+        return
+    if valid_player(game, args[0]):
+        pid = int(args[0])
+        print(game.players[pid].hand_zone)
 
 def view_recycle(game, args):
-    print(game.cur_player.recycle_zone)
+    if args == []:
+        print(game.cur_player.recycle_zone)
+        return
+    elif len(args) > 1:
+        print("! Usage: recycle [pid]")
+        return
+    if valid_player(game, args[0]):
+        pid = int(args[0])
+        print(game.players[pid].recycle_zone)
+
+def view_fight(game, args):
+    if args == []:
+        print(game.cur_player.fight_zone)
+        return
+    elif len(args) > 1:
+        print("! Usage: fight [pid]")
+        return
+    if valid_player(game, args[0]):
+        pid = int(args[0])
+        print(game.players[pid].fight_zone)
 
 def view_special(game, args):
-    print(game.cur_player.special_zone)
+    if args == []:
+        print(game.cur_player.special_zone)
+        return
+    elif len(args) > 1:
+        print("! Usage: special [pid]")
+        return
+    if valid_player(game, args[0]):
+        pid = int(args[0])
+        print(game.players[pid].special_zone)
 
 def view_discard(game, args):
     print(game.discard_zone)
@@ -34,15 +68,12 @@ def view_discard(game, args):
 def view_ante(game, args):
     print(game.ante_zone)
 
-def view_fight(game, args):
-    print(game.cur_player.fight_zone)
-
 def view_help():
     print("View commands: deck, hand, recycle, special, ante, fight, status")
-    print("Deck commands: draw, mill, shuffle")
+    print("Deck commands: draw, mill, shuffle, return")
     print("Hand commands: play")
     print("Player commands: player")
-    print("Phase commands: start, main, combat, war, end")
+    print("Game commands: phase")
     print("Other commands: exit, help, clear")
 
 def view_status(game):

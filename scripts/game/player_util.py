@@ -18,14 +18,22 @@ def show_pids(game):
             print(f" {pid} ", end="")
     print("]")
 
-def switch_player(game):
-    cmd = ""
-    print("Enter PID to switch to:")
-    show_pids(game)
+def switch_player(game, args):
+    if len(args) > 1:
+        print("! Usage: player [pid]")
+        return
+    if len(args) == 1:
+        if not valid_player(args[0], game.players):
+            return
+        pid = int(args[0])
+    else:
+        cmd = ""
+        print("Enter PID to switch to:")
+        show_pids(game)
 
-    while not valid_player(cmd, game.players):
-        cmd = input("> ")
-    pid = int(cmd)
+        while not valid_player(cmd, game.players):
+            cmd = input("> ")
+        pid = int(cmd)
 
     new_player = game.players[pid]
     game.cur_player = new_player
