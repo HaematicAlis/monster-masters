@@ -12,3 +12,10 @@ def change_phase(game, args):
 
     game.phase = phase
     print(f"Changed phase to {phase}")
+
+def win_round(game):
+    winner = game.cur_player
+    for player in game.players.values():
+        if player.fight_zone.size() > 0:
+            player.fight_zone.move(0, winner.recycle_zone)
+    print(f"Moved all cards to {winner}'s Recycle Pile.")

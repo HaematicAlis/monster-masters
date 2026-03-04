@@ -73,7 +73,7 @@ def view_help():
     print("Deck commands: draw, mill, shuffle, return")
     print("Hand commands: play")
     print("Player commands: player")
-    print("Game commands: phase")
+    print("Game commands: phase, win")
     print("Other commands: exit, help, clear")
 
 def view_board(game):

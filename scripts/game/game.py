@@ -2,7 +2,7 @@ from game.deck_util import draw, recycle_top, shuffle, return_to_deck
 from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight, view_help, view_board
 from game.player_util import switch_player
 from game.hand_util import play_card
-from game.game_util import change_phase
+from game.game_util import change_phase, win_round
 from engine.zone import Zone
 
 largest_gid = 0
@@ -89,6 +89,8 @@ class Game:
                 view_status(self)
             elif cmd == "phase":
                 change_phase(self, args)
+            elif cmd == "win":
+                win_round(self)
             elif cmd == "return":
                 return_to_deck(self, args)
             elif cmd == "shuffle":
