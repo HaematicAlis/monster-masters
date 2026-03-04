@@ -88,7 +88,7 @@ class Game:
             elif cmd == "phase":
                 change_phase(self, args)
             elif cmd == "return":
-                return_to_deck(self)
+                return_to_deck(self, args)
             elif cmd == "shuffle":
                 shuffle(self)
             else:
