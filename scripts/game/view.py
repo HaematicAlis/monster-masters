@@ -69,12 +69,19 @@ def view_ante(game, args):
     print(game.ante_zone)
 
 def view_help():
-    print("View commands: deck, hand, recycle, special, ante, fight, status")
+    print("View commands: deck, hand, recycle, special, ante, fight, status, board")
     print("Deck commands: draw, mill, shuffle, return")
     print("Hand commands: play")
     print("Player commands: player")
     print("Game commands: phase")
     print("Other commands: exit, help, clear")
+
+def view_board(game):
+    for player in game.players.values():
+        if player.fight_zone.size() == 0:
+            print(f"{player.name}: empty")
+        else:
+            print(f"{player.name}: {player.fight_zone.cards[0]}")
 
 def view_status(game):
     for player in game.players.values():
