@@ -1,4 +1,4 @@
-from game.deck_util import draw, recycle_top, shuffle, return_to_deck
+from game.deck_util import draw, recycle_top, shuffle, return_to_deck, refresh_deck
 from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight, view_help, view_board
 from game.player_util import switch_player
 from game.hand_util import play_card
@@ -95,5 +95,7 @@ class Game:
                 return_to_deck(self, args)
             elif cmd == "shuffle":
                 shuffle(self)
+            elif cmd == "refresh":
+                refresh_deck(self)
             else:
                 print("! Command not found. Type 'help' for available commands.")

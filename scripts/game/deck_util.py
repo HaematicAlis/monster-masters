@@ -74,3 +74,13 @@ def return_to_deck(game, args):
 def shuffle(game):
     game.cur_player.deck_zone.shuffle()
     print("Shuffled deck.")
+
+# Empty deck restriction here temporarily; should be moved to game logic
+def refresh_deck(game):
+    player = game.cur_player
+    if player.deck_zone.size() > 0:
+        print("! Deck must be empty.")
+        return
+    player.deck_zone.cards = list(player.recycle_zone.cards)
+    player.recycle_zone.cards = []
+    shuffle(game)

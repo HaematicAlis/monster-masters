@@ -70,7 +70,7 @@ def view_ante(game, args):
 
 def view_help():
     print("View commands: deck, hand, recycle, special, ante, fight, status, board")
-    print("Deck commands: draw, mill, shuffle, return")
+    print("Deck commands: draw, mill, shuffle, return, refresh")
     print("Hand commands: play")
     print("Player commands: player")
     print("Game commands: phase, win")
