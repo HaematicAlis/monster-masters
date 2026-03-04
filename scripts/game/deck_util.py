@@ -62,7 +62,10 @@ def return_to_deck(game, args):
     card_index = args[0]
 
     card_to_move = player.hand_zone.cards[int(card_index)]
-    confirmation = input(f"Move {card_to_move.name} into deck index {destination}? (y/n)\n").lower()
+    if int(destination) == player.deck_zone.size():
+        confirmation = input(f"Move {card_to_move.name} to top of deck? (y/n)\n> ").lower()
+    else:
+        confirmation = input(f"Move {card_to_move.name} into deck index {destination}? (y/n)\n> ").lower()
     if confirmation != "y":
         return
     player.hand_zone.move(int(card_index), player.deck_zone, int(destination))
