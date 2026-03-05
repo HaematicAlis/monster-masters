@@ -18,8 +18,6 @@ class Game:
         largest_gid += 1
         self.gid = largest_gid
 
-        self.phase = "draw"
-
         # Reveal public player zones to all other players
         for player in self.players.values():
             for pid in self.players:
@@ -35,6 +33,9 @@ class Game:
         for pid in self.players:
             self.discard_zone.reveal_to_player(pid)
             self.ante_zone.reveal_to_player(pid)
+
+        shuffle(self, ["all"])
+        change_phase(self, ["draw"])
 
     def __str__(self):
         s = f"GID{self.gid}: Players["
@@ -94,7 +95,7 @@ class Game:
             elif cmd == "return":
                 return_to_deck(self, args)
             elif cmd == "shuffle":
-                shuffle(self)
+                shuffle(self, args)
             elif cmd == "refresh":
                 refresh_deck(self)
             else:

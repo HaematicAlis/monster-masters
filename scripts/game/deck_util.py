@@ -71,9 +71,20 @@ def return_to_deck(game, args):
     player.hand_zone.move(int(card_index), player.deck_zone, int(destination))
     print(f"Moved {card_to_move.name} to index {destination}.")
 
-def shuffle(game):
-    game.cur_player.deck_zone.shuffle()
-    print("Shuffled deck.")
+def shuffle(game, args):
+    if len(args) > 1:
+        print("! Usage: shuffle or shuffle all")
+        return
+    if args == []:
+        game.cur_player.deck_zone.shuffle()
+        print("Shuffled deck.")
+        return
+    if args[0] == "all":
+        for player in game.players.values():
+            player.deck_zone.shuffle()
+        print("Shuffled all decks.")
+    else:
+        print("! Usage shuffle or shuffle all")
 
 # Empty deck restriction here temporarily; should be moved to game logic
 def refresh_deck(game):

@@ -1,3 +1,5 @@
+from game.deck_util import draw
+
 def change_phase(game, args):
     if len(args) != 1:
         print("! Usage: phase <phase_name>")
@@ -11,7 +13,13 @@ def change_phase(game, args):
         return
 
     game.phase = phase
-    print(f"Changed phase to {phase}")
+    print(f"Changed phase to {phase}.")
+
+    if phase == "draw":
+        for player in reversed(game.players.values()):
+            game.cur_player = player
+            draw(game, ["3"])
+        change_phase(game, ["main"])
 
 def win_round(game):
     winner = game.cur_player
