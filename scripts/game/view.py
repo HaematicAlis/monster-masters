@@ -7,6 +7,40 @@ def valid_player(game, pid):
         return False
     return True
 
+def view_zone(game, args):
+    if len(args) > 2 or args == []:
+        print("! Usage: view <zone> [pid]")
+        return
+
+    valid_zones = ["deck", "recycle", "fight", "special", "hand", "discard", "ante"]
+    zone = args[0]    
+    if zone not in valid_zones:
+        print("! Not a valid zone. (Valid zones: deck, recycle, fight, special, hand, discard, ante)")
+        return
+
+    if len(args) == 2:
+        if zone == "discard" or zone == "ante":
+            print("! Zone does not belong to a player.")
+            return
+        new_args = args[1:]
+    else:
+        new_args = []
+
+    if zone == "deck":
+        view_deck(game, new_args)
+    elif zone == "recycle":
+        view_recycle(game, new_args)
+    elif zone == "hand":
+        view_hand(game, new_args)
+    elif zone == "fight":
+        view_fight(game, new_args)
+    elif zone == "special":
+        view_special(game, new_args)
+    elif zone == "discard":
+        view_discard(game)
+    elif zone == "ante":
+        view_ante(game)
+
 def view_deck(game, args):
     if args == []:
         print(game.cur_player.deck_zone)
@@ -62,14 +96,14 @@ def view_special(game, args):
         pid = int(args[0])
         print(game.players[pid].special_zone)
 
-def view_discard(game, args):
+def view_discard(game):
     print(game.discard_zone)
 
-def view_ante(game, args):
+def view_ante(game):
     print(game.ante_zone)
 
 def view_help():
-    print("View commands: deck, hand, recycle, special, ante, fight, status, board")
+    print("View commands: view, status, board")
     print("Deck commands: draw, mill, shuffle, return, refresh")
     print("Hand commands: play")
     print("Player commands: player")

@@ -1,5 +1,5 @@
 from game.deck_util import draw, recycle_top, shuffle, return_to_deck, refresh_deck
-from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight, view_help, view_board
+from game.view import view_zone, view_help, view_board
 from game.player_util import switch_player
 from game.hand_util import play_card
 from game.game_util import change_phase, win_round
@@ -64,20 +64,8 @@ class Game:
                     print("")
             elif cmd == "player":
                 switch_player(self, args)
-            elif cmd == "deck":
-                view_deck(self, args)
-            elif cmd == "hand":
-                view_hand(self, args)
-            elif cmd == "recycle":
-                view_recycle(self, args)
-            elif cmd == "special":
-                view_special(self, args)
-            elif cmd == "discard":
-                view_discard(self, args)
-            elif cmd == "ante":
-                view_ante(self, args)
-            elif cmd == "fight":
-                view_fight(self, args)
+            elif cmd == "view":
+                view_zone(self, args)
             elif cmd == "play":
                 play_card(self, args)
             elif cmd == "exit":
