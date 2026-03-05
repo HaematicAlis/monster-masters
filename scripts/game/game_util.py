@@ -18,7 +18,8 @@ def change_phase(game, args):
     if phase == "draw":
         for player in reversed(game.players.values()):
             game.cur_player = player
-            draw(game, ["3"])
+            cards_to_draw = 3 - player.hand_zone.size()
+            draw(game, [str(cards_to_draw)])
         change_phase(game, ["main"])
 
 def win_round(game):
