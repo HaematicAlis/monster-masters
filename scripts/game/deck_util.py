@@ -27,6 +27,8 @@ def move_from_topdeck(game, zone, args):
         top_card = player.deck_zone.size() - 1
         player.deck_zone.move(top_card, zone)
     print(f"{player.name} moved {num_cards} cards from deck to {zone.name}.")
+    if player.deck_zone.size() == 0:
+        refresh_deck(game)
 
 def draw(game, args):
     if len(args) > 1:
@@ -86,7 +88,6 @@ def shuffle(game, args):
     else:
         print("! Usage shuffle or shuffle all")
 
-# Empty deck restriction here temporarily; should be moved to game logic
 def refresh_deck(game):
     player = game.cur_player
     if player.deck_zone.size() > 0:
@@ -94,4 +95,5 @@ def refresh_deck(game):
         return
     player.deck_zone.cards = list(player.recycle_zone.cards)
     player.recycle_zone.cards = []
-    shuffle(game)
+    shuffle(game, [])
+    print("Refreshed deck.")

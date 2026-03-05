@@ -1,5 +1,5 @@
 from game.deck_util import draw, recycle_top, shuffle, return_to_deck, refresh_deck
-from game.view import view_zone, view_help, view_board
+from game.view import view_zone, view_help, view_board, view_status
 from game.player_util import switch_player
 from game.hand_util import play_card
 from game.game_util import change_phase, win_round
