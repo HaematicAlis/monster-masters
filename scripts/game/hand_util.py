@@ -9,19 +9,23 @@ def valid_hand_card(player, cmd):
         return False
     return True
 
-def play_card(game):
+def play_card(game, args):
     player = game.cur_player
     if player.hand_zone.size() == 0:
         print("! No cards in hand.")
         return
+    if player.fight_zone.size() == 1:
+        print("! Card already in Fight Zone")
+        return
+
+    if len(args) > 1 or args == []:
+        print("! Usage: play <card_index>")
+        return
     
-    print(player.hand_zone)
-    print("Select card index:")
-    cmd = ""
-    while not valid_hand_card(player, cmd):
-        cmd = input("> ")
+    if not valid_hand_card(player, args[0]):
+        return
     
-    index = int(cmd)
-    card = player.hand_zone.cards[index]
-    player.hand_zone.move(index, player.fight_zone)
+    card_index = int(args[0])
+    card = player.hand_zone.cards[card_index]
+    player.hand_zone.move(card_index, player.fight_zone)
     print(f"{player.name} played {card.name}")

@@ -79,7 +79,7 @@ class Game:
             elif cmd == "fight":
                 view_fight(self, args)
             elif cmd == "play":
-                play_card(self)
+                play_card(self, args)
             elif cmd == "exit":
                 print("Goodbye!")
             elif cmd == "help":
