@@ -1,6 +1,8 @@
-from game.deck_util import draw, recycle_top
-from game.view import view_deck, view_hand, view_status, view_recycle, view_special, view_discard, view_ante, view_fight
+from game.deck_util import draw, recycle_top, shuffle, return_to_deck, refresh_deck
+from game.view import view_zone, view_help, view_board, view_status
 from game.player_util import switch_player
+from game.hand_util import play_card
+from game.game_util import change_phase, win_round
 from engine.zone import Zone
 
 largest_gid = 0
@@ -11,73 +13,78 @@ class Game:
 
         self.players = players
         if len(players) > 0:
-            self.cur_player = players[0]
+            self.cur_player = next(iter(players.values()))
 
         largest_gid += 1
         self.gid = largest_gid
 
-        self.phase = "draw"
-        self.discard_zone = Zone("discard", 0)
-        self.ante_zone = Zone("ante", 0)
+        # Reveal public player zones to all other players
+        for player in self.players.values():
+            for pid in self.players:
+                player.fight_zone.reveal_to_player(pid)
+                player.special_zone.reveal_to_player(pid)
+                player.recycle_zone.reveal_to_player(pid)
+
+        player_ids = set(self.players.keys())
+        self.discard_zone = Zone("discard", 0, player_ids)
+        self.ante_zone = Zone("ante", 0, player_ids)
+
+        # Reveal public zones to all players 
+        for pid in self.players:
+            self.discard_zone.reveal_to_player(pid)
+            self.ante_zone.reveal_to_player(pid)
+
+        shuffle(self, ["all"])
+        change_phase(self, ["draw"])
 
     def __str__(self):
         s = f"GID{self.gid}: Players["
-        for player in self.players:
-            s += f"PID{player.pid}:{player.name};"
+        for pid in self.players:
+            s += f"PID{pid}:{players[pid].name};"
         s += "]"
         return s
 
     def game_loop(self):
         cmd = ""
         while cmd != "exit":
-            cmd = input("> ")
+            line = input("> ")
+            tokens = line.split(" ")
+            cmd = tokens[0]
+            if len(tokens) > 1:
+                args = tokens[1:]
+            else:
+                args = []
+
             if cmd == "draw":
-                draw(self)
-            if cmd == "mill":
-                recycle_top(self)
+                draw(self, args)
+            elif cmd == "mill":
+                recycle_top(self, args)
             elif cmd == "clear":
                 for i in range(30):
                     print("")
             elif cmd == "player":
-                switch_player(self)
-            elif cmd == "deck":
-                view_deck(self)
-            elif cmd == "hand":
-                view_hand(self)
-            elif cmd == "recycle":
-                view_recycle(self)
-            elif cmd == "special":
-                view_special(self)
-            elif cmd == "discard":
-                view_discard(self)
-            elif cmd == "ante":
-                view_ante(self)
-            elif cmd == "fight":
-                view_fight(self)
+                switch_player(self, args)
+            elif cmd == "view":
+                view_zone(self, args)
+            elif cmd == "play":
+                play_card(self, args)
             elif cmd == "exit":
                 print("Goodbye!")
             elif cmd == "help":
-                print("Zone commands: deck, hand, recycle, special, discard, ante")
-                print("Deck commands: draw, mill")
-                print("Phase commands: start, main, combat, war, end")
-                print("Game commands: player, status")
-                print("Other commands: exit, help")
+                view_help()
+            elif cmd == "board":
+                view_board(self)
             elif cmd == "status":
                 view_status(self)
-            elif cmd == "main":
-                self.phase = "main"
-                print("Phase set to Main")
-            elif cmd == "combat":
-                self.phase = "combat"
-                print("Phase set to Combat")
-            elif cmd == "war":
-                self.phase = "war"
-                print("Phase set to War")
-            elif cmd == "end":
-                self.phase = "end"
-                print("Phase set to End")
-            elif cmd == "start":
-                self.phase = "draw"
-                print("Phase set to Draw")
+            elif cmd == "phase":
+                change_phase(self, args)
+            elif cmd == "win":
+                win_round(self)
+            elif cmd == "return":
+                return_to_deck(self, args)
+            elif cmd == "shuffle":
+                shuffle(self, args)
+            elif cmd == "refresh":
+                refresh_deck(self)
             else:
                 print("! Command not found. Type 'help' for available commands.")

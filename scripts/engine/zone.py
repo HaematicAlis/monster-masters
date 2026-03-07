@@ -1,15 +1,15 @@
 from engine.card import Card
-
+import random
 class Zone:
-    def __init__(self, name, owner):
+    def __init__(self, name, owner, visibility=set()):
         self.name = name
         self.owner = owner
         self.cards = []
-        self.visibility = []
+        self.visibility = visibility
     
     def __str__(self):
         zone_list = f"[Zone: {self.name}] ({len(self.cards)}) vis: {self.visibility}"
-        for card in self.cards:
+        for card in reversed(self.cards):
             zone_list += "\n"
             zone_list += f"[{str(self.cards.index(card))}]"
             zone_list += str(card)
@@ -18,21 +18,17 @@ class Zone:
     def size(self):
         return len(self.cards)
 
+    # TODO: Untested since change to set
     def reveal_to_player(self, pid):
-        if pid in self.visibility:
-            return
-        self.visibility.append(pid)
+        self.visibility.add(pid)
         for card in self.cards:
-            card.visibility.append(pid)
+            card.visibility.add(pid)
     
+    # TODO: Untested since change to set
     def hide_from_player(self, pid):
-        if pid not in self.visibility:
-            return
-        index_to_hide = self.visibility.index(pid)
-        self.visibility.pop(index_to_hide)
+        self.visibility.remove(pid)
         for card in self.cards:
-            index_to_hide = card.visibility.index(pid)
-            card.visibility.pop(index_to_hide)
+            card.visibility.remove(pid)
 
     # Not currently needed
     #def find_by_uid(self, uid):
@@ -67,6 +63,7 @@ class Zone:
     # add_index -> index in destination zone (optional; default is end of zone)
     # Maybe refactor
     # Maybe change default index
+    # TODO: Visibility untested after change to set
     def move(self, index, zone, add_index=-1):
         if add_index == -1:
             add_index = len(zone.cards)
@@ -76,6 +73,9 @@ class Zone:
         card = self.cards[index]
         card.zone = zone.name
         card.owner = zone.owner
-        card.visibility = list(zone.visibility)
+        card.visibility = set(zone.visibility)
         zone.cards.insert(add_index, card)
         self.remove(index)
+
+    def shuffle(self):
+        random.shuffle(self.cards)
