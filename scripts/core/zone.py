@@ -1,4 +1,4 @@
-from engine.card import Card
+from entities.card import Card
 import random
 class Zone:
     def __init__(self, name, owner, visibility=set()):

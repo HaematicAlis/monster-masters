@@ -1,9 +1,9 @@
-from engine.card import Card
-from engine.files import import_cards, import_decklist
-from engine.search import search_card_by_id
-from engine.db import init_card_dict
-from engine.zone import Zone
-from engine.player import Player
+from entities.card import Card
+from util.files import import_cards, import_decklist
+from core.search import search_card_by_id
+from core.db import init_card_dict
+from core.zone import Zone
+from entities.player import Player
 
 card_dict = import_cards("data/cards.csv")
 init_card_dict(card_dict)

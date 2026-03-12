@@ -1,6 +1,6 @@
-from engine.search import search_card_by_id
-from engine.card import Card
-from engine.zone import Zone
+from core.db import search_card_by_id
+from entities.card import Card
+from core.zone import Zone
 
 class Deck:
     def __init__(self, name, cards):

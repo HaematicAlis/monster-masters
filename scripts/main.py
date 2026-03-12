@@ -1,8 +1,8 @@
-from engine.card import Card
-from engine.files import import_cards, import_decklist
-from engine.db import init_card_dict
-from engine.player import Player
-from game.game import Game
+from entities.card import Card
+from util.files import import_cards, import_decklist
+from core.db import init_card_dict
+from entities.player import Player
+from core.game import Game
 
 CARD_DATA_PATH = "data/cards.csv"
 TEST_DECK = "decks/test.deck"

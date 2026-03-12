@@ -1,4 +1,4 @@
-from engine.zone import Zone
+from core.zone import Zone
 
 class Player:
     def __init__(self, name, pid):
