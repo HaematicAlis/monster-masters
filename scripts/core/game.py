@@ -4,19 +4,23 @@ from systems.player_util import switch_player
 from systems.hand_util import play_card
 from systems.game_util import change_phase, win_round
 from core.zone import Zone
+from core.board import Board
 
 largest_gid = 0
 
 class Game:
     def __init__(self, players):
         global largest_gid
-
-        self.players = players
-        if len(players) > 0:
-            self.cur_player = next(iter(players.values()))
-
         largest_gid += 1
         self.gid = largest_gid
+
+        self.players = players
+        self.num_players = len(players)
+        if self.num_players > 0:
+            self.cur_player = next(iter(players.values()))
+
+        # BOARD WIP
+        self.board = Board(self)
 
         # Reveal public player zones to all other players
         for player in self.players.values():
